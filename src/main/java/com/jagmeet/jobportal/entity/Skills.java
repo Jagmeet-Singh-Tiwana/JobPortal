@@ -3,20 +3,19 @@ package com.jagmeet.jobportal.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="skills")
+@Table(name = "skills")
 public class Skills {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
-
     private String experienceLevel;
-
     private String yearsOfExperience;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="job_seeker_profile")
+    @JoinColumn(name = "job_seeker_profile")
     private JobSeekerProfile jobSeekerProfile;
 
     public Skills() {
@@ -62,12 +61,12 @@ public class Skills {
         this.yearsOfExperience = yearsOfExperience;
     }
 
-    public JobSeekerProfile getJobSeekerprofile() {
+    public JobSeekerProfile getJobSeekerProfile() {
         return jobSeekerProfile;
     }
 
-    public void setJobSeekerprofile(JobSeekerProfile jobSeekerprofile) {
-        this.jobSeekerProfile = jobSeekerprofile;
+    public void setJobSeekerProfile(JobSeekerProfile jobSeekerProfile) {
+        this.jobSeekerProfile = jobSeekerProfile;
     }
 
     @Override
@@ -77,7 +76,7 @@ public class Skills {
                 ", name='" + name + '\'' +
                 ", experienceLevel='" + experienceLevel + '\'' +
                 ", yearsOfExperience='" + yearsOfExperience + '\'' +
-                ", jobSeekerprofile=" + jobSeekerProfile +
+                ", jobSeekerProfile=" + jobSeekerProfile +
                 '}';
     }
 }

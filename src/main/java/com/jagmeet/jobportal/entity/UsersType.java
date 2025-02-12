@@ -1,3 +1,4 @@
+
 package com.jagmeet.jobportal.entity;
 
 import jakarta.persistence.*;
@@ -5,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="users_type")
+@Table(name = "users_type")
 public class UsersType {
 
     @Id
@@ -17,13 +18,13 @@ public class UsersType {
     @OneToMany(targetEntity = Users.class, mappedBy = "userTypeId", cascade = CascadeType.ALL)
     private List<Users> users;
 
+    public UsersType() {
+    }
+
     public UsersType(int userTypeId, String userTypeName, List<Users> users) {
         this.userTypeId = userTypeId;
         this.userTypeName = userTypeName;
         this.users = users;
-    }
-
-    public UsersType() {
     }
 
     public int getUserTypeId() {

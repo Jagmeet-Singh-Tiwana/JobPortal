@@ -5,39 +5,37 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="job_seeker_profile")
+@Table(name = "job_seeker_profile")
 public class JobSeekerProfile {
 
     @Id
     private int userAccountId;
 
     @OneToOne
-    @JoinColumn(name="user_account_id")
+    @JoinColumn(name = "user_account_id")
     @MapsId
     private Users userId;
 
     private String firstName;
     private String lastName;
-
     private String city;
-
     private String state;
-
     private String country;
-
     private String workAuthorization;
-
     private String employmentType;
-
     private String resume;
 
-    @Column(nullable = true, length=64)
-    private  String profilePhoto;
+    @Column(nullable = true, length = 64)
+    private String profilePhoto;
 
     @OneToMany(targetEntity = Skills.class, cascade = CascadeType.ALL, mappedBy = "jobSeekerProfile")
     private List<Skills> skills;
 
     public JobSeekerProfile() {
+    }
+
+    public JobSeekerProfile(Users userId) {
+        this.userId = userId;
     }
 
     public JobSeekerProfile(int userAccountId, Users userId, String firstName, String lastName, String city, String state, String country, String workAuthorization, String employmentType, String resume, String profilePhoto, List<Skills> skills) {
@@ -55,10 +53,6 @@ public class JobSeekerProfile {
         this.skills = skills;
     }
 
-    public JobSeekerProfile(Users userId) {
-        this.userId = userId;
-    }
-
     public int getUserAccountId() {
         return userAccountId;
     }
@@ -67,11 +61,11 @@ public class JobSeekerProfile {
         this.userAccountId = userAccountId;
     }
 
-    public Users getUsersId() {
+    public Users getUserId() {
         return userId;
     }
 
-    public void setUsersId(Users userId) {
+    public void setUserId(Users userId) {
         this.userId = userId;
     }
 
@@ -157,7 +151,7 @@ public class JobSeekerProfile {
 
     @Override
     public String toString() {
-        return "JobSeekerprofile{" +
+        return "JobSeekerProfile{" +
                 "userAccountId=" + userAccountId +
                 ", userId=" + userId +
                 ", firstName='" + firstName + '\'' +

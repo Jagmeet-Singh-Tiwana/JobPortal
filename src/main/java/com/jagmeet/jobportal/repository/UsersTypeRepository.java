@@ -1,3 +1,4 @@
+
 package com.jagmeet.jobportal.repository;
 
 import com.jagmeet.jobportal.entity.UsersType;

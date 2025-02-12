@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class Users {
 
     @Id
@@ -26,20 +26,19 @@ public class Users {
     private Date registrationDate;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="userTypeId", referencedColumnName = "userTypeId")
-    private int userTypeId;
+    @JoinColumn(name = "userTypeId", referencedColumnName = "userTypeId")
+    private UsersType userTypeId;
 
-    public Users(int userId, String email, String password, boolean isActive, Date registrationDate, int userTypeId) {
+    public Users() {
+    }
+
+    public Users(int userId, String email, String password, boolean isActive, Date registrationDate, UsersType userTypeId) {
         this.userId = userId;
         this.email = email;
         this.password = password;
         this.isActive = isActive;
         this.registrationDate = registrationDate;
         this.userTypeId = userTypeId;
-    }
-
-    public Users() {
-
     }
 
     public int getUserId() {
@@ -82,11 +81,11 @@ public class Users {
         this.registrationDate = registrationDate;
     }
 
-    public int getUserTypeId() {
+    public UsersType getUserTypeId() {
         return userTypeId;
     }
 
-    public void setUserType(int userTypeId) {
+    public void setUserTypeId(UsersType userTypeId) {
         this.userTypeId = userTypeId;
     }
 
@@ -98,7 +97,7 @@ public class Users {
                 ", password='" + password + '\'' +
                 ", isActive=" + isActive +
                 ", registrationDate=" + registrationDate +
-                ", userType=" + userTypeId +
+                ", userTypeId=" + userTypeId +
                 '}';
     }
 }
